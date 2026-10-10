@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nigiri</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="stage">
+    <section class="island" id="island" data-state="mini">
+
+      <header class="bar glass" id="bar">
+        <button class="mini" id="mini" aria-label="Open Nigiri">
+          <span class="mini-mascot" id="miniMascot"></span>
+          <span class="mini-text"><b id="miniTitle">Nigiri</b><span id="miniSub">All quiet</span></span>
+          <span class="badge" id="badge" hidden>0</span>
+        </button>
+
+        <nav class="tabs" id="tabs" aria-label="Main">
+          <button class="pill" data-tab="home" aria-label="Home" title="Home">
+            <svg viewBox="0 0 24 24"><path d="M12 3.2 3 11h2.4v8.4h4.6v-5.2h4v5.2h4.6V11H21z"/></svg>
+          </button>
+          <button class="pill" data-tab="chat" aria-label="Chat" title="Chat">
+            <svg viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6l-4.5 3.5V17H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+          </button>
+          <button class="pill" id="newChat" aria-label="New chat" title="New chat">
+            <svg viewBox="0 0 24 24" class="line"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <span class="grow"></span>
+          <button class="pill" data-tab="settings" aria-label="Settings" title="Settings">
+            <svg viewBox="0 0 24 24" class="line"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M18.5 5.5l-1.8 1.8M7.3 16.7l-1.8 1.8"/></svg>
+          </button>
+          <button class="pill" id="soundBtn" aria-label="Sound" title="Sound on/off">
+            <svg viewBox="0 0 24 24"><path d="M4 9.5h3.6L12 5.8v12.4l-4.4-3.7H4z"/><path class="line waves" d="M15.4 9.2a4 4 0 0 1 0 5.6M17.8 6.8a7.4 7.4 0 0 1 0 10.4"/></svg>
+          </button>
+        </nav>
+      </header>
+
+      <section class="panel glass" id="panel">
+
+        <!-- HOME -->
+        <div class="view" id="view-home" hidden>
+          <div class="hero">
+            <div class="hero-mascot" id="heroMascot" role="img" aria-label="Nigiri"></div>
+            <div class="hero-text">
+              <h1 id="heroTitle">All quiet</h1>
+              <p id="heroSub">No agent is running right now.</p>
+            </div>
+          </div>
+          <div id="approvals" class="approvals"></div>
+          <div id="sessions" class="sessions"></div>
+          <div id="empty" class="empty" hidden>
+            <p>Connect Claude Code to see its sessions here and approve its requests from this island.</p>
+            <div class="row">
+              <button class="btn" id="goConnect">Connect Claude Code</button>
+              <button class="btn ghost" id="runDemo">Try the demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHAT -->
+        <div class="view chat" id="view-chat" hidden>
+          <div class="chat-top">
+            <select id="provider" aria-label="Provider"></select>
+            <input id="model" list="modelList" placeholder="Model" aria-label="Model" spellcheck="false" autocomplete="off">
+            <datalist id="modelList"></datalist>
+            <button class="icon-btn" id="refreshModels" title="Refresh model list" aria-label="Refresh model list">
+              <svg viewBox="0 0 24 24" class="line"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+            </button>
+          </div>
+          <div class="notice" id="chatNotice" hidden></div>
+          <div class="messages" id="messages" aria-live="polite"></div>
+          <form class="composer" id="composer">
+            <textarea id="input" rows="1" placeholder="Ask anything" aria-label="Message"></textarea>
+            <button class="send" id="sendBtn" type="submit" aria-label="Send">
+              <svg viewBox="0 0 24 24" class="line"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- SETTINGS -->
+        <div class="view settings" id="view-settings" hidden></div>
+      </section>
+    </section>
+  </div>
+
+  <script src="mascot.js"></script>
+  <script src="sounds.js"></script>
+  <script src="app.js"></script>
+  <script src="home.js"></script>
+  <script src="chat.js"></script>
+  <script src="settings.js"></script>
+  <script src="boot.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "name": "nigiri",
+  "version": "0.2.0",
+  "description": "Nigiri - a tiny glass island companion for your AI coding agents (Windows)",
+  "author": "Nigiri",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.nigiri.app",
+    "productName": "Nigiri",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "lib/**/*",
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Nigiri-${version}-portable.exe"
+    }
+  }
+}
